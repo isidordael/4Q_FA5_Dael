@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact List</title>
+  <script>
+    window.onload = function() {
+      var contacts = []; // Array to store contacts
+
+      function updateList() {
+        document.getElementById("contactList").innerHTML = contacts.join(" ");
+      }
+
+      document.getElementById("addBtn").addEventListener("click", function() {
+        var name = document.getElementById("nameInput").value.trim(); // Get input value
+        if (name !== "") { // Check if input is not empty
+          if (contacts.length >= 7) { // If contacts list has reached maximum size
+            contacts.shift(); // Remove first contact
+          }
+          contacts.push(name); // Add new contact to end of list
+          updateList(); // Update displayed list
+          document.getElementById("nameInput").value = ""; // Clear input field
+        } else {
+          alert("Please enter a name.");
+        }
+      });
+
+      document.getElementById("removeBtn").addEventListener("click", function() {
+        if (contacts.length > 0) { // Check if contacts list is not empty
+          contacts.pop(); // Remove last contact
+          updateList(); // Update displayed list
+        } else {
+          alert("No contacts to remove.");
+        }
+      });
+    };
+  </script>
+</head>
+<body>
+  <h2>Contact List</h2>
+  <input type="text" id="nameInput" placeholder="Enter name">
+  <button id="addBtn">Add</button>
+  <button id="removeBtn">Remove</button>
+  <div id="contactList"></div>
+</body>
+</html>

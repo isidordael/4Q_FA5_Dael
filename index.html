@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shape Generator</title>
+  <script>
+    function generateShape() {
+      var userInput;
+      do {
+        userInput = prompt("Please enter a number:");
+        userInput = parseInt(userInput);
+      } while (isNaN(userInput));
+
+      var output = "";
+
+      if (userInput % 2 === 0) { // Even number, print triangle
+        for (var i = userInput; i >= 1; i--) {
+          for (var j = i; j >= 1; j--) {
+            output += i + " ";
+          }
+          output += "<br>";
+        }
+      } else { // Odd number, print rectangle
+        for (var i = userInput; i >= 1; i--) {
+          for (var j = 1; j <= userInput; j++) {
+            output += i + " ";
+          }
+          output += "<br>";
+        }
+      }
+
+      document.getElementById("output").innerHTML = output;
+    }
+  </script>
+</head>
+<body>
+  <button onclick="generateShape()">Generate Shape</button>
+  <div id="output"></div>
+  <a href="4Q_FA5_2_Dael.html">Problem set 2</a>
+</body>
+</html>
